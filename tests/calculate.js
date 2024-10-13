@@ -33,34 +33,42 @@ describe("Testing the Add Functions", function() {
     done();
   });
 
-  it('should handle new lines as delimiters', () => {
+  it("should handle new lines as delimiters", () => {
     expect(stringCalculator.add('1\n2,3')).to.equal(6);
   });
   
-  it('should support different delimiters', () => {
+  it("should support different delimiters", () => {
     expect(stringCalculator.add('//;\n1;2')).to.equal(3); // Test for custom single-character delimiter
   });
 
-  it('should support delimiters of any length', () => {
+  it("should support delimiters of any length", () => {
     expect(stringCalculator.add('//[***]\n1***2***3')).to.equal(6);
   });
 
-  it('should support multiple delimiters', () => {
+  it("should support multiple delimiters", () => {
     expect(stringCalculator.add('//[*][%]\n1*2%3')).to.equal(6);
   });
 
-  it('should support multiple delimiters with length longer than one char', () => {
+  it("should support multiple delimiters with length longer than one char", () => {
     expect(stringCalculator.add('//[**][%%]\n1**2%%3')).to.equal(6);
   });
-  it('should throw an error for negative numbers', () => {
+  it("should throw an error for negative numbers", () => {
     expect(() => stringCalculator.add('1,-2')).to.throw('Negatives not allowed: -2');
   });
 
-  it('should throw an error for multiple negative numbers', () => {
+  it("should throw an error for multiple negative numbers", () => {
     expect(() => stringCalculator.add('1,-2,-3')).to.throw('Negatives not allowed: -2, -3');
   });
 
-  it('should ignore numbers larger than 1000', () => {
+  it("should ignore numbers larger than 1000", () => {
     expect(stringCalculator.add('2,1001')).to.equal(2);
+  });
+  it("should throw an error for invalid input format with misplaced delimiters", () => {
+    expect(() => stringCalculator.add('1,\n2')).to.throw('Invalid input format');
+  });
+
+  it("should throw an error if the input ends with a delimiter", () => {
+    expect(() => stringCalculator.add('1,2,')).to.throw('Invalid input format');
+    expect(() => stringCalculator.add('1\n2\n')).to.throw('Invalid input format');
   });
 })
