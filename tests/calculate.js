@@ -52,4 +52,11 @@ describe("Testing the Add Functions", function() {
   it('should support multiple delimiters with length longer than one char', () => {
     expect(stringCalculator.add('//[**][%%]\n1**2%%3')).to.equal(6);
   });
+  it('should throw an error for negative numbers', () => {
+    expect(() => stringCalculator.add('1,-2')).to.throw('Negatives not allowed: -2');
+  });
+
+  it('should throw an error for multiple negative numbers', () => {
+    expect(() => stringCalculator.add('1,-2,-3')).to.throw('Negatives not allowed: -2, -3');
+  });
 })
