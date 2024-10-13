@@ -59,4 +59,8 @@ describe("Testing the Add Functions", function() {
   it('should throw an error for multiple negative numbers', () => {
     expect(() => stringCalculator.add('1,-2,-3')).to.throw('Negatives not allowed: -2, -3');
   });
+
+  it('should ignore numbers larger than 1000', () => {
+    expect(stringCalculator.add('2,1001')).to.equal(2);
+  });
 })
