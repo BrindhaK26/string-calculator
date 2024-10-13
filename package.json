@@ -1,0 +1,25 @@
+{
+  "name": "string-calculator",
+  "version": "1.0.0",
+  "description": "A simple NodeJS application to calculate the sum of string of numbers.",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha tests/calculate"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrindhaK26/string-calculator.git"
+  },
+  "author": "Brindha K",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BrindhaK26/string-calculator/issues"
+  },
+  "homepage": "https://github.com/BrindhaK26/string-calculator#readme",
+  "dependencies": {
+    "chai": "^4.3.10",
+    "lodash": "^4.17.21",
+    "mocha": "^7.1.0",
+    "prompt-sync": "^4.2.0"
+  }
+}
